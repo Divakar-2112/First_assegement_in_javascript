@@ -8,27 +8,42 @@ option=prompt("Main menu \n choose an action \n 1. Add Users \n 2. Display Users
 
 
 if (option==1){
+    uniqueId=Number(prompt("Enter a Unique Id"))
     name=prompt("Enter a User Name");
+    if (name===""){
+        console.log("Invalid Name (Name should not empty string)");
+        break;
+        
+    }
+    else{
+    
+        
+    }
     age=Number(prompt("Enter a Age"));
+    if (age>0){
+        
+    }
+    else{
+        console.log("Invalid age (must be positive number)");
+        break;
+    }
     weight=parseFloat(prompt("Enter a Weight"));
     height=Number(prompt("Enter a Height"));
     meter=height/100;
-    let bmi=0;
     bmi=(weight) / (meter * meter);
-    console.log(name+ " added successfully with" +bmi);
-    let id=Math.floor(Math.random()*100);
-    fitness.push({id,name,age,weight,height,bmi});
 if (bmi < 18.5) {
-    console.log ("Goal:Increase calorie intake and gain weight.");
+    console.log (name+ " added successfully with" +bmi+ "|Goal:Increase calorie intake and gain weight.");
 } else if (bmi >= 18.5 && bmi <= 24.9) {
-    console.log ("Goal:Maintain your current activity and diet.");
+    console.log (name+ " added successfully with" +bmi+ "|Goal:Maintain your current activity and diet.");
 } else {
-    console.log("Goal:Aim to burn more calories through exercise.");
+    console.log(name+ " added successfully with" +bmi+ "|Goal:Aim to burn more calories through exercise.");
 }
+fitness.push({uniqueId,name,age,weight,height,bmi});
+
 }
 else if (option==2){
     for (let i=0;i<fitness.length;i++){
-        console.log("Unique ID:" +this.id+ " Name:" +name+ " Age:" +age+ " Weight:" +weight+ " Height:" +height+ " BMI:" +this.bmi)
+        console.log("Unique ID:" +fitness[i].uniqueId+ " Name:" +fitness[i].name+ " Age:" +fitness[i].age+ " Weight:" +fitness[i].weight+ " Height:" +fitness[i].height+ " BMI:" +fitness[i].bmi)
   }
 
 }
@@ -54,19 +69,19 @@ else if (option == 3) {
 }
 
 else if (option == 4) {
-    let name = prompt("Enter the User name to Remove details");
+    let id = prompt("Enter the User Id to Remove details");
     let found = false; 
     
     for (let j = 0; j < fitness.length; j++) {
-        if (fitness[j].name == name) {
+        if (fitness[j].uniqueId == id) {
             fitness.splice(j, 1); 
-            console.log("User Name " + name + " deleted successfully!");
+            console.log("User Name " + id + " deleted successfully!");
             found = true;
             break;  
         }
     }
     if (!found) {
-        console.log("User with Name " + name + " not found.");
+        console.log("User with Name " + id + " not found.");
     }
 }
 
@@ -101,9 +116,9 @@ function sumEvenOdd(arr) {
   let arr=[5,15,25,35,45];
   sumEvenOdd(arr);
   
-// 2. Given an array of numbers, write a function in JavaScript that removes all the duplicates from
-// the array and returns a new array with only the unique values. Ensure that your solution is
-// efficient in terms of time complexity. If there are no duplicates, return the array as is
+// // 2. Given an array of numbers, write a function in JavaScript that removes all the duplicates from
+// // the array and returns a new array with only the unique values. Ensure that your solution is
+// // efficient in terms of time complexity. If there are no duplicates, return the array as is
 
 function duplicates(arr1) {
     let array = []; 
